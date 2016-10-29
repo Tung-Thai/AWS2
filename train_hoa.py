@@ -1,6 +1,6 @@
 #http://machinelearningmastery.com/multi-class-classification-tutorial-keras-deep-learning-library/
 import numpy
-import pandas
+import pandas as pd
 from keras.models import Sequential
 from keras.layers import Dense
 from keras.layers import Dropout
