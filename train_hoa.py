@@ -18,18 +18,35 @@ seed = 7
 numpy.random.seed(seed)
 # load pima indians dataset
 #using header=none do not use header=0 if not you will lost first row
-df = numpy.loadtxt("/tmp/codegit/AWS2/cancer_predict.txt", delimiter=",")
+
 #df = pd.read_csv("/tmp/codegit/AWS2/cancer_predict.csv",header = None)
-dataset=df.values
-X=dataset[:,2:33]
-Y=dataset[:,1:2]
-print dataset[568]
-#conver str class colum to interger
-encoder = LabelEncoder()
-encoder.fit(Y)
-encoded_Y = encoder.transform(Y)
-dummy_y = np_utils.to_categorical(encoded_Y)
-print dummy_y
+
+# Convert string column to float
+def str_column_to_float(dataset, column):
+	for row in dataset:
+		row[column] = float(row[column].strip())
+
+def str_column_to_int(dataset, column):
+	class_values = [row[column] for row in dataset]
+	unique = set(class_values)
+	lookup = dict()
+	for i, value in enumerate(unique):
+		lookup[value] = i
+	for row in dataset:
+		row[column] = lookup[row[column]]
+	return lookup
+
+filename = 'iris.csv'
+dataset=pd.read_csv("/tmp/codegit/AWS2/cancer_predict.csv",header = None)
+print('Loaded data file {0} with {1} rows and {2} columns').format(filename, len(dataset), len(dataset[0]))
+print(dataset[0])
+# convert string columns to float
+for i in range(2,569):
+	str_column_to_float(dataset, i)
+# convert class column to int
+lookup = str_column_to_int(dataset, 1)
+print(dataset[0])
+print(lookup)
 #dummy_y.shape
 # define 10-fold cross validation test harness
 # define baseline model
