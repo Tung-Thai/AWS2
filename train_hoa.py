@@ -41,6 +41,7 @@ def str_column_to_int(dataset, column):
 # define baseline model
 # convert class column to int// colum cuoi la class/labale
 lookup = str_column_to_int(dataset, 1)
+dummy_y = np_utils.to_categorical(lookup)
 def baseline_model():
 	# create model
 	model = Sequential()
@@ -51,7 +52,7 @@ def baseline_model():
 	return model
 estimator = KerasClassifier(build_fn=baseline_model, nb_epoch=100, batch_size=10, verbose=0)
 kfold = StratifiedKFold(n_splits=10, shuffle=True, random_state=seed)
-results = cross_val_score(estimator, X, lookup, cv=kfold)
+results = cross_val_score(estimator, X, dummy_y, cv=kfold)
 print("Baseline: %.2f%% (%.2f%%)" % (results.mean()*100, results.std()*100))
 
 
