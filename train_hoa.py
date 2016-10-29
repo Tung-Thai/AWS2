@@ -16,9 +16,17 @@ from sklearn.pipeline import Pipeline
 seed = 7
 numpy.random.seed(seed)
 # load dataset
-dataframe = pandas.read_csv("hoa.csv", header=None)
+dataframe = pandas.read_csv("/tmp/codegit/AWS2/hoa.csv", header=None)
 dataset = dataframe.values
 print('Loaded data file {0} with {1} rows and {2} columns').format(filename, len(dataset), len(dataset[0]))
+print(dataset[0])
+print(dataset[1])
+X = dataset[:,0:4]
+Y = dataset[:,4]
+encoder = LabelEncoder()
+encoder.fit(Y)
+encoded_Y = encoder.transform(Y)
+print encoder_Y
 # split into input (X) and output (Y) variables
 #X = dataset[:,0:60].astype(float)
 #Y = dataset[:,60]
