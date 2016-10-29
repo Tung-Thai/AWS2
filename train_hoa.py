@@ -18,7 +18,8 @@ seed = 7
 numpy.random.seed(seed)
 # load pima indians dataset
 #using header=none do not use header=0 if not you will lost first row
-df = pd.read_csv("/tmp/codegit/AWS2/cancer_predict.csv",header = None)
+df = numpy.loadtxt("/tmp/codegit/AWS2/cancer_predict.txt", delimiter=",")
+#df = pd.read_csv("/tmp/codegit/AWS2/cancer_predict.csv",header = None)
 dataset=df.values
 X=dataset[:,2:33]
 Y=dataset[:,1:2]
