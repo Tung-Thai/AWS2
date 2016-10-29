@@ -18,6 +18,7 @@ numpy.random.seed(seed)
 # load dataset
 dataframe = pandas.read_csv("/tmp/codegit/AWS2/hoa.csv", header=None)
 dataset = dataframe.values
+filename ="iris data"
 print('Loaded data file {0} with {1} rows and {2} columns').format(filename, len(dataset), len(dataset[0]))
 print(dataset[0])
 print(dataset[1])
