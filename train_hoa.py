@@ -27,7 +27,7 @@ Y = dataset[:,4]
 encoder = LabelEncoder()
 encoder.fit(Y)
 encoded_Y = encoder.transform(Y)
-print encoder_Y
+print encoded_Y
 # split into input (X) and output (Y) variables
 #X = dataset[:,0:60].astype(float)
 #Y = dataset[:,60]
