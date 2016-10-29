@@ -17,11 +17,6 @@ from sklearn.pipeline import Pipeline
 seed = 7
 numpy.random.seed(seed)
 # load pima indians dataset
-filename ="cate"
-dataframe = pandas.read_csv("/tmp/codegit/AWS2/train_categorical.csv", header=None)
-dataset = dataframe.values
-print('Loaded data file {0} with {1} rows and {2} columns').format(filename, len(dataset), len(dataset[0]))
-print (dataset[0])
-print (dataset[1])
-
+df = pd.read_csv("/tmp/codegit/AWS2/cancer_predict.csv",header = 0)
+df.head()
 
